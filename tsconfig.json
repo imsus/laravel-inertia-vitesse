@@ -1,0 +1,44 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "preserve",
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noUnusedLocals": true,
+    "paths": {
+      "@/*": [
+        "resources/*"
+      ],
+      "~/*": [
+        "resources/*"
+      ]
+    },
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "target": "esnext",
+    "types": [
+      "unplugin-vue-define-options",
+      "vite/client",
+      "vue/ref-macros"
+    ]
+  },
+  "exclude": [
+    "public",
+    "dist",
+    "node_modules",
+    "**/*.spec.ts"
+  ],
+  "include": [
+    "resources/**/*"
+  ]
+}
