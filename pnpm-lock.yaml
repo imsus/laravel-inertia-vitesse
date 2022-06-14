@@ -2,8 +2,10 @@ lockfileVersion: 5.4
 
 specifiers:
   '@antfu/eslint-config': ^0.25.1
+  '@headlessui/vue': ^1.6.4
   '@inertiajs/inertia': ^0.11.0
   '@inertiajs/inertia-vue3': ^0.6.0
+  '@inertiajs/progress': ^0.2.7
   '@types/node': ^17.0.42
   '@unocss/reset': ^0.38.2
   '@vitejs/plugin-vue': ^2.3.3
@@ -11,6 +13,7 @@ specifiers:
   '@vueuse/core': ^8.6.0
   '@vueuse/head': ^0.7.6
   eslint: ^8.17.0
+  launch-editor-middleware: ^2.4.0
   typescript: ^4.7.3
   unocss: ^0.38.2
   unplugin-auto-import: ^0.8.7
@@ -24,8 +27,10 @@ specifiers:
 
 devDependencies:
   '@antfu/eslint-config': 0.25.1_ud6rd4xtew5bv4yhvkvu24pzm4
+  '@headlessui/vue': 1.6.4_vue@3.2.37
   '@inertiajs/inertia': 0.11.0
   '@inertiajs/inertia-vue3': 0.6.0_lgz5zmprnxmfmyvgtmvu2blgda
+  '@inertiajs/progress': 0.2.7_@inertiajs+inertia@0.11.0
   '@types/node': 17.0.42
   '@unocss/reset': 0.38.2
   '@vitejs/plugin-vue': 2.3.3_vite@2.9.12+vue@3.2.37
@@ -33,6 +38,7 @@ devDependencies:
   '@vueuse/core': 8.6.0_vue@3.2.37
   '@vueuse/head': 0.7.6_vue@3.2.37
   eslint: 8.17.0
+  launch-editor-middleware: 2.4.0
   typescript: 4.7.3
   unocss: 0.38.2_vite@2.9.12
   unplugin-auto-import: 0.8.7_xnp3iobkgue47hz2kuxdzi7u6a
@@ -212,6 +218,15 @@ packages:
       - supports-color
     dev: true
 
+  /@headlessui/vue/1.6.4_vue@3.2.37:
+    resolution: {integrity: sha512-axZMcfRLNuwHESPMgDb0Vj7xxlNPmsPl77pvoRZGzJh7lRdRic9kC/qbVM8G36OpIJRZzqrlADLQ2JIObhQjBg==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      vue: ^3.2.0
+    dependencies:
+      vue: 3.2.37
+    dev: true
+
   /@humanwhocodes/config-array/0.9.5:
     resolution: {integrity: sha512-ObyMyWxZiCu/yTisA7uzx81s40xR2fD5Cg/2Kq7G02ajkNubJf6BopgDTmDyc3U7sXpNKM8cYOw7s7Tyr+DnCw==}
     engines: {node: '>=10.10.0'}
@@ -264,6 +279,15 @@ packages:
       qs: 6.10.5
     transitivePeerDependencies:
       - debug
+    dev: true
+
+  /@inertiajs/progress/0.2.7_@inertiajs+inertia@0.11.0:
+    resolution: {integrity: sha512-zxadfLlBPIUvTE9g5k71V/Ayzo8P9kEp4hV4UKywCC2kURufxV7bycbZqU1GeMCFGDT+VRrjXNl676Pwwa1HoQ==}
+    peerDependencies:
+      '@inertiajs/inertia': ^0.6.0 || ^0.7.0 || ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0
+    dependencies:
+      '@inertiajs/inertia': 0.11.0
+      nprogress: 0.2.0
     dev: true
 
   /@nodelib/fs.scandir/2.1.5:
@@ -2298,6 +2322,19 @@ packages:
     resolution: {integrity: sha512-lxpCM3HTvquGxKGzHeknB/sUjuVoUElLlfYnXZT73K8geR9jQbroGlSCFBax9/0mpGoD3kzcMLnOlGQPJJNyqQ==}
     dev: true
 
+  /launch-editor-middleware/2.4.0:
+    resolution: {integrity: sha512-/M7AX/6xktZY60KE7j71XLrj9U6H5TBoP+mJzhYB3fcdAq8rcazit/K0qWiu1jvytUPXP4lJRd1VJFwvdMQ/uw==}
+    dependencies:
+      launch-editor: 2.4.0
+    dev: true
+
+  /launch-editor/2.4.0:
+    resolution: {integrity: sha512-mZ0BHeSn/ohL+Ib+b+JnxC59vcNz6v5IR9d0CuM8f0x8ni8oK3IIG6G0vMkpxc0gFsmvINkztGOHiWTaX4BmAg==}
+    dependencies:
+      picocolors: 1.0.0
+      shell-quote: 1.7.3
+    dev: true
+
   /levn/0.4.1:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
     engines: {node: '>= 0.8.0'}
@@ -2510,6 +2547,10 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       path-key: 3.1.1
+    dev: true
+
+  /nprogress/0.2.0:
+    resolution: {integrity: sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==}
     dev: true
 
   /nth-check/2.1.1:
@@ -2933,6 +2974,10 @@ packages:
   /shebang-regex/3.0.0:
     resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
     engines: {node: '>=8'}
+    dev: true
+
+  /shell-quote/1.7.3:
+    resolution: {integrity: sha512-Vpfqwm4EnqGdlsBFNmHhxhElJYrdfcxPThu+ryKS5J8L/fhAwLazFZtq+S+TWZ9ANj2piSQLGj6NQg+lKPmxrw==}
     dev: true
 
   /side-channel/1.0.4:

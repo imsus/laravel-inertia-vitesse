@@ -15,10 +15,10 @@ defineOptions({
 
 <template>
   <div>
-    Home Page
+    About Page
     <nav>
-      <InertiaLink href="/about">
-        Go to About Page
+      <InertiaLink href="/">
+        Back to home
       </InertiaLink>
     </nav>
   </div>

@@ -5,9 +5,7 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    InertiaLogo: typeof import('./../views/components/inertia-logo.vue')['default']
-    LaravelLogo: typeof import('./../views/components/laravel-logo.vue')['default']
-    ResourceBlock: typeof import('./../views/components/resource-block.vue')['default']
+    DarkModeToggler: typeof import('./../views/components/DarkModeToggler.vue')['default']
   }
 }
 
