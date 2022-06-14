@@ -1,0 +1,29 @@
+{
+  "cSpell.words": [
+    "Vitesse",
+    "Vite",
+    "unocss",
+    "vitest",
+    "vueuse",
+    "pinia",
+    "demi",
+    "antfu",
+    "iconify",
+    "intlify",
+    "vitejs",
+    "unplugin",
+    "pnpm"
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.formatOnSave": false,
+  "files.associations": {
+    "*.css": "postcss"
+  },
+  "i18n-ally.keystyle": "nested",
+  "i18n-ally.localesPaths": "locales",
+  "i18n-ally.sortKeys": true,
+  "i18n-ally.sourceLanguage": "en",
+  "prettier.enable": false
+}

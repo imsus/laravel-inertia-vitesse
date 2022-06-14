@@ -13,10 +13,10 @@
     "moduleResolution": "node",
     "noUnusedLocals": true,
     "paths": {
-      "@/*": [
+      "~/*": [
         "resources/*"
       ],
-      "~/*": [
+      "@/*": [
         "resources/*"
       ]
     },
