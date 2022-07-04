@@ -13,5 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', fn() => inertia('welcome'));
-Route::get('/about', fn() => inertia('about'));
+Route::get('/', fn () => inertia('welcome'));
+Route::get('/about', fn () => inertia('about'));

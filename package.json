@@ -4,9 +4,8 @@
   "private": true,
   "packageManager": "pnpm@7.1.5",
   "scripts": {
-    "dev:frontend": "vite",
-    "dev:backend": "php artisan serve",
-    "dev": "pnpm run dev:frontend & pnpm run dev:backend",
+    "dev": "php artisan serve & vite",
+    "preview": "vite build && php artisan serve",
     "build": "vite build"
   },
   "devDependencies": {
