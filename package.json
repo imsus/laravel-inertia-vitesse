@@ -7,8 +7,7 @@
     "dev": "php artisan serve & vite",
     "preview": "vite build && php artisan serve",
     "build": "vite build",
-    "test": "vitest",
-    "coverage": "vitest run --coverage"
+    "test": "vitest run --coverage"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.25.2",
