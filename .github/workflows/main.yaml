@@ -1,0 +1,59 @@
+name: Main Worklow
+
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  pest:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
+      with:
+        php-version: '8.1'
+    - uses: actions/checkout@v3
+    - name: Copy .env
+      run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+    - name: Install Dependencies
+      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+    - name: Directory Permissions
+      run: chmod -R 777 storage bootstrap/cache
+    - name: Execute tests (Unit and Feature tests) via Pest
+      env:
+        DB_CONNECTION: sqlite
+        DB_DATABASE: database/database.sqlite
+      run: php artisan test -p
+
+  vitest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          registry-url: https://registry.npmjs.org/
+          cache: pnpm
+
+      - run: pnpm install
+      - run: pnpm run test:unit
+
+  # deploy:
+  #   name: 'Laravel Forge Deploy'
+  #   runs-on: ubuntu-latest
+
+  #   needs:
+  #   - pest
+  #   - vitest
+
+  #   steps:
+  #     - uses: actions/checkout@v3.0.2
+  #     - uses: jbrooksuk/laravel-forge-action@v1.0.2
+  #       with:
+  #         trigger_url: ${{ secrets.TRIGGER_URL }}

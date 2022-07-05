@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "php artisan serve & vite",
     "preview": "vite build && php artisan serve",
-    "build": "vite build"
+    "build": "vite build",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.25.2",
@@ -18,9 +20,12 @@
     "@unocss/reset": "^0.43.0",
     "@vitejs/plugin-vue": "^2.3.3",
     "@vue/compiler-sfc": "^3.2.37",
+    "@vue/test-utils": "^2.0.2",
     "@vueuse/core": "^8.7.5",
     "@vueuse/head": "^0.7.6",
+    "c8": "^7.11.3",
     "eslint": "^8.19.0",
+    "jsdom": "^20.0.0",
     "launch-editor-middleware": "^2.4.0",
     "typescript": "^4.7.4",
     "unocss": "^0.43.0",
@@ -30,6 +35,7 @@
     "vite": "^2.9.13",
     "vite-plugin-inspect": "^0.5.1",
     "vite-plugin-laravel": "0.2.0-beta.24",
+    "vitest": "^0.17.0",
     "vue": "^3.2.37",
     "vue-tsc": "^0.38.2"
   },
