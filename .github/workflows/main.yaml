@@ -14,6 +14,7 @@ jobs:
   test:
     name: Unit Test and Feature Test
     runs-on: ubuntu-latest
+    environment: production
     steps:
       - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
         with:
@@ -25,44 +26,40 @@ jobs:
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
 
-      - name: Install Composer Dependencies
-        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-
-      - name: Install PNPM
-        uses: pnpm/action-setup@v2
-
-      - name: Use Node.js 18.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18.x
-          registry-url: https://registry.npmjs.org/
-          cache: pnpm
-
-      - name: Install PNPM Dependencies
-        run: pnpm install
-
       - name: Directory Permissions
         run: chmod -R 777 storage bootstrap/cache
 
-      - name: Execute backend tests (Unit and Feature tests) via Pest
+      - name: Create Sqlite Database
+        run: touch database/database.sqlite
+
+      - name: Install PHP Dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+
+      - name: Install Bun
+        run: curl https://bun.sh/install | bash
+
+      - name: Install Node Dependencies
+        run: bun install
+
+      - name: Laravel Test
         env:
           DB_CONNECTION: sqlite
           DB_DATABASE: database/database.sqlite
         run: php artisan test -p
 
-      - name: Execute frontend tests via Vitest
-        run: pnpm test
+      - name: Vitest Test
+        run: node_modules/.bin/vitest --coverage --run
 
-  deploy:
-    name: Deploy via Laravel Forge
-    runs-on: ubuntu-latest
-    environment: production
+  # deploy:
+  #   name: Deploy via Laravel Forge
+  #   runs-on: ubuntu-latest
+  #   environment: production
 
-    needs:
-      - test
+  #   needs:
+  #     - test
 
-    steps:
-      - uses: actions/checkout@v3.0.2
-      - uses: jbrooksuk/laravel-forge-action@v1.0.2
-        with:
-          trigger_url: ${{ secrets.TRIGGER_URL }}
+  #   steps:
+  #     - uses: actions/checkout@v3.0.2
+  #     - uses: jbrooksuk/laravel-forge-action@v1.0.2
+  #       with:
+  #         trigger_url: ${{ secrets.TRIGGER_URL }}
