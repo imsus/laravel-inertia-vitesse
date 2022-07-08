@@ -45,10 +45,10 @@ jobs:
         env:
           DB_CONNECTION: sqlite
           DB_DATABASE: database/database.sqlite
-        run: php artisan test -p
+        run: /home/runner/.bun/bin/bun run test:pest
 
       - name: Vitest Test
-        run: node_modules/.bin/vitest --coverage --run
+        run: /home/runner/.bun/bin/bun run test:vitest
 
   # deploy:
   #   name: Deploy

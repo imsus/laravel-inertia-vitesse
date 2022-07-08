@@ -7,8 +7,10 @@
     "dev": "php artisan serve & vite",
     "preview": "vite build && php artisan serve",
     "build": "vite build",
-    "test": "php artisan test && vitest run --coverage",
-    "lint": "./vendor/bin/pint && eslint --fix ."
+    "lint": "vendor/bin/pint && eslint --fix .",
+    "test": "php artisan test -p && vitest --coverage --run",
+    "test:pest": "php artisan test -p",
+    "test:vitest": "vitest run --coverage --run"
   },
   "dependencies": {
     "@headlessui/vue": "^1.6.6",
