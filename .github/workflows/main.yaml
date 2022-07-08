@@ -39,7 +39,7 @@ jobs:
         run: curl https://bun.sh/install | bash
 
       - name: Install Node Dependencies
-        run: bun install
+        run: /home/runner/.bun/bin/bun install
 
       - name: Laravel Test
         env:
