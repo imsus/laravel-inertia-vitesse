@@ -9,6 +9,6 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Counter: typeof import('./../views/components/Counter.vue')['default']
     DarkModeToggler: typeof import('./../views/components/DarkModeToggler.vue')['default']
+    InertiaLink: typeof import('@inertiajs/inertia-vue3')['Link']
   }
-
 }

@@ -4,12 +4,15 @@ on:
   push:
     branches:
     - main
+    - develop
   pull_request:
     branches:
     - main
+    - develop
 
 jobs:
   test:
+    name: Unit Test and Feature Test
     runs-on: ubuntu-latest
     steps:
     - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
@@ -41,24 +44,25 @@ jobs:
     - name: Directory Permissions
       run: chmod -R 777 storage bootstrap/cache
 
-    - name: Execute tests (Unit and Feature tests) via Pest
+    - name: Execute backend tests (Unit and Feature tests) via Pest
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
       run: php artisan test -p
 
-    - name: Execute frontend tests
+    - name: Execute frontend tests via Vitest
       run: pnpm test
 
-  # deploy:
-  #   name: 'Laravel Forge Deploy'
-  #   runs-on: ubuntu-latest
+  deploy:
+    name: Deploy via Laravel Forge
+    runs-on: ubuntu-latest
+    environment: production
 
-  #   needs:
-  #   - test
+    needs:
+    - test
 
-  #   steps:
-  #     - uses: actions/checkout@v3.0.2
-  #     - uses: jbrooksuk/laravel-forge-action@v1.0.2
-  #       with:
-  #         trigger_url: ${{ secrets.TRIGGER_URL }}
+    steps:
+      - uses: actions/checkout@v3.0.2
+      - uses: jbrooksuk/laravel-forge-action@v1.0.2
+        with:
+          trigger_url: ${{ secrets.TRIGGER_URL }}
