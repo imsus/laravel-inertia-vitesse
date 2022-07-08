@@ -9,7 +9,7 @@
     "build": "vite build",
     "lint": "vendor/bin/pint && eslint --fix .",
     "test": "php artisan test -p && vitest --coverage --run",
-    "test:pest": "php artisan test -p",
+    "test:pest": "php artisan test",
     "test:vitest": "vitest run --coverage --run"
   },
   "dependencies": {
