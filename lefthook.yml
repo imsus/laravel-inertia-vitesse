@@ -14,8 +14,8 @@ pre-commit:
   parallel: true
   commands:
     eslint:
-      glob: "*.{html,css,js,jsx,ts,vue,json,yml,yaml}"
-      run: eslint --fix {staged_files}
+      glob: '*.{html,css,js,jsx,ts,vue,json,yml,yaml}'
+      run: node_modules/.bin/eslint --fix {staged_files}
     pint:
-      glob: "*.{php,blade.php}"
+      glob: '*.{php,blade.php}'
       run: vendor/bin/pint

@@ -12,9 +12,9 @@ on:
 
 jobs:
   test:
-    name: Unit Test and Feature Test
+    name: Test
     runs-on: ubuntu-latest
-    environment: production
+    environment: Production
     steps:
       - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
         with:
@@ -51,9 +51,9 @@ jobs:
         run: node_modules/.bin/vitest --coverage --run
 
   # deploy:
-  #   name: Deploy via Laravel Forge
+  #   name: Deploy
   #   runs-on: ubuntu-latest
-  #   environment: production
+  #   environment: Production
 
   #   needs:
   #     - test
