@@ -1,0 +1,11 @@
+{
+  "root": true,
+  "extends": "@antfu",
+  "ignorePatterns": [
+    "**/node_modules/**",
+    "**/bower_components/**",
+    "**/vendor/**",
+    "**/public/**",
+    "**/storage/**"
+  ]
+}

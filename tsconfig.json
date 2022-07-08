@@ -27,9 +27,10 @@
     "strictNullChecks": true,
     "target": "esnext",
     "types": [
-      "unplugin-vue-define-options",
+      "vitest",
       "vite/client",
-      "vue/ref-macros"
+      "vue/ref-macros",
+      "unplugin-vue-define-options"
     ]
   },
   "exclude": [

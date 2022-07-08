@@ -28,10 +28,3 @@ createInertiaApp({
     InertiaProgress.init()
   },
 })
-
-// Click to open editor
-if (process.env.NODE_ENV !== 'production') {
-  globalThis.VUE_DEVTOOLS_CONFIG = {
-    openInEditorHost: process.env.DEV_SERVER_URL,
-  }
-}

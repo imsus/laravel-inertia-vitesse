@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import path from 'path'
 import { defineConfig } from 'vite'
 import laravel from 'vite-plugin-laravel'
@@ -73,7 +74,6 @@ export default defineConfig({
     // Visit http://localhost:3333/__inspect/ to see the inspector
     Inspect(),
   ],
-
   // https://github.com/vitest-dev/vitest
   test: {
     include: ['tests/**/*.test.ts'],

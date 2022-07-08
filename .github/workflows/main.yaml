@@ -3,55 +3,55 @@ name: Main Worklow
 on:
   push:
     branches:
-    - main
-    - develop
+      - main
+      - develop
   pull_request:
     branches:
-    - main
-    - develop
+      - main
+      - develop
 
 jobs:
   test:
     name: Unit Test and Feature Test
     runs-on: ubuntu-latest
     steps:
-    - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
-      with:
-        php-version: '8.1'
+      - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
+        with:
+          php-version: '8.1'
 
-    - name: Checkout Branch
-      uses: actions/checkout@v3
+      - name: Checkout Branch
+        uses: actions/checkout@v3
 
-    - name: Copy .env
-      run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+      - name: Copy .env
+        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
 
-    - name: Install Composer Dependencies
-      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+      - name: Install Composer Dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
-    - name: Install PNPM
-      uses: pnpm/action-setup@v2
+      - name: Install PNPM
+        uses: pnpm/action-setup@v2
 
-    - name: Use Node.js 18.x
-      uses: actions/setup-node@v3
-      with:
-        node-version: 18.x
-        registry-url: https://registry.npmjs.org/
-        cache: pnpm
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          registry-url: https://registry.npmjs.org/
+          cache: pnpm
 
-    - name: Install PNPM Dependencies
-      run: pnpm install
+      - name: Install PNPM Dependencies
+        run: pnpm install
 
-    - name: Directory Permissions
-      run: chmod -R 777 storage bootstrap/cache
+      - name: Directory Permissions
+        run: chmod -R 777 storage bootstrap/cache
 
-    - name: Execute backend tests (Unit and Feature tests) via Pest
-      env:
-        DB_CONNECTION: sqlite
-        DB_DATABASE: database/database.sqlite
-      run: php artisan test -p
+      - name: Execute backend tests (Unit and Feature tests) via Pest
+        env:
+          DB_CONNECTION: sqlite
+          DB_DATABASE: database/database.sqlite
+        run: php artisan test -p
 
-    - name: Execute frontend tests via Vitest
-      run: pnpm test
+      - name: Execute frontend tests via Vitest
+        run: pnpm test
 
   deploy:
     name: Deploy via Laravel Forge
@@ -59,7 +59,7 @@ jobs:
     environment: production
 
     needs:
-    - test
+      - test
 
     steps:
       - uses: actions/checkout@v3.0.2
