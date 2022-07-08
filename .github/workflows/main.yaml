@@ -45,7 +45,7 @@ jobs:
         env:
           DB_CONNECTION: sqlite
           DB_DATABASE: database/database.sqlite
-        run: /home/runner/.bun/bin/bun run test:pest
+        run: php artisan test
 
       - name: Vitest Test
         run: /home/runner/.bun/bin/bun run test:vitest
