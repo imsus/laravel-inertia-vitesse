@@ -1,0 +1,21 @@
+# EXAMPLE USAGE:
+#
+#   Refer for explanation to following link:
+#   https://github.com/evilmartians/lefthook/blob/master/docs/full_guide.md
+#
+pre-push:
+  commands:
+    npm-audit:
+      run: pnpm audit
+    # composer-audit:
+    #   run: bundle audit
+
+pre-commit:
+  parallel: true
+  commands:
+    eslint:
+      glob: "*.{html,css,js,jsx,ts,vue,json,yml,yaml}"
+      run: eslint --fix {staged_files}
+    pint:
+      glob: "*.{php,blade.php}"
+      run: vendor/bin/pint

@@ -8,6 +8,7 @@
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#00aba9">
     <meta name="msapplication-TileColor" content="#00aba9">
     <meta name="theme-color" content="#00aba9">
+    <link rel="manifest" href="/build/manifest.webmanifest">
 		@vite
     <script>
       (function () {

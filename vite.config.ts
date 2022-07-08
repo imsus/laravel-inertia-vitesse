@@ -9,6 +9,7 @@ import { HeadlessUiResolver } from 'unplugin-vue-components/resolvers'
 import Inspect from 'vite-plugin-inspect'
 import DefineOptions from 'unplugin-vue-define-options/vite'
 import Unocss from 'unocss/vite'
+import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
   resolve: {
@@ -73,6 +74,13 @@ export default defineConfig({
     // https://github.com/antfu/vite-plugin-inspect
     // Visit http://localhost:3333/__inspect/ to see the inspector
     Inspect(),
+
+    VitePWA({
+      registerType: 'autoUpdate',
+      devOptions: {
+        enabled: true,
+      },
+    }),
   ],
   // https://github.com/vitest-dev/vitest
   test: {
