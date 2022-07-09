@@ -77,6 +77,36 @@ export default defineConfig({
 
     VitePWA({
       registerType: 'autoUpdate',
+      manifest: {
+        id: 'com.imsus.livt',
+        name: 'LaravelInertiaVitesse',
+        short_name: 'LIVT',
+        description: 'Template Projects for Laravel Inertia Vitesse',
+        start_url: '/?homescreen=1',
+        background_color: '#ffffff',
+        theme_color: '#ffffff',
+        display: 'standalone',
+        orientation: 'portrait',
+        scope: '/',
+        icons: [
+          {
+            src: '/build/android-chrome-192x192.png',
+            sizes: '192x192',
+            type: 'image/png',
+          },
+          {
+            src: '/build/android-chrome-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+          },
+          {
+            src: '/build/android-chrome-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'any maskable',
+          },
+        ],
+      },
       devOptions: {
         enabled: true,
       },
