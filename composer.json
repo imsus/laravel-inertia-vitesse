@@ -15,8 +15,7 @@
     "innocenzi/laravel-vite": "0.2.*",
     "itsgoingd/clockwork": "^5.1",
     "laravel/framework": "^9.11",
-    "laravel/pint": "^0.2.3",
-    "laravel/sanctum": "^2.14.1",
+    "laravel/sanctum": "^3.0",
     "laravel/tinker": "^2.7",
     "pestphp/pest": "^1.21",
     "pestphp/pest-plugin-laravel": "^1.2",
@@ -24,6 +23,7 @@
   },
   "require-dev": {
     "fakerphp/faker": "^1.9.1",
+    "laravel/pint": "^1.1",
     "laravel/sail": "^1.0.1",
     "mockery/mockery": "^1.4.4",
     "nunomaduro/collision": "^6.1",
