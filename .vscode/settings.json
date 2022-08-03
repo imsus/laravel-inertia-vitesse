@@ -11,5 +11,6 @@
   "i18n-ally.sortKeys": true,
   "i18n-ally.sourceLanguage": "en",
   "prettier.enable": false,
-  "testing.automaticallyOpenPeekView": "never"
+  "testing.automaticallyOpenPeekView": "never",
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

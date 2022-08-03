@@ -7,7 +7,12 @@ import {
   transformerVariantGroup,
 } from 'unocss'
 
+import { formPreflight } from './resources/scripts/unocss/form-preflight'
+
 export default defineConfig({
+  preflights: [
+    formPreflight,
+  ],
   presets: [
     presetUno(),
     presetTypography(),

@@ -1,15 +1,28 @@
 /// <reference types="vitest" />
 import path from 'path'
 import { defineConfig } from 'vite'
-import laravel from 'vite-plugin-laravel'
-import vue from '@vitejs/plugin-vue'
+import { HeadlessUiResolver } from 'unplugin-vue-components/resolvers'
+import { VitePWA } from 'vite-plugin-pwa'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
-import { HeadlessUiResolver } from 'unplugin-vue-components/resolvers'
-import Inspect from 'vite-plugin-inspect'
 import DefineOptions from 'unplugin-vue-define-options/vite'
+import Inspect from 'vite-plugin-inspect'
+import laravel from 'vite-plugin-laravel'
 import Unocss from 'unocss/vite'
-import { VitePWA } from 'vite-plugin-pwa'
+import vue from '@vitejs/plugin-vue'
+
+import type { UserConfig as VitestUserConfigInterface } from 'vitest/config'
+
+const vitestConfig: VitestUserConfigInterface = {
+  // https://github.com/vitest-dev/vitest
+  test: {
+    include: ['tests/**/*.test.ts'],
+    environment: 'jsdom',
+    deps: {
+      inline: ['@vue', '@vueuse', 'vue-demi'],
+    },
+  },
+}
 
 export default defineConfig({
   resolve: {
@@ -19,13 +32,13 @@ export default defineConfig({
     },
   },
   plugins: [
-    DefineOptions(),
-
     vue({
       reactivityTransform: true,
     }),
 
     laravel(),
+
+    DefineOptions(),
 
     // https://github.com/antfu/unplugin-auto-import
     AutoImport({
@@ -112,12 +125,6 @@ export default defineConfig({
       },
     }),
   ],
-  // https://github.com/vitest-dev/vitest
-  test: {
-    include: ['tests/**/*.test.ts'],
-    environment: 'jsdom',
-    deps: {
-      inline: ['@vue', '@vueuse', 'vue-demi'],
-    },
-  },
+
+  test: vitestConfig.test,
 })

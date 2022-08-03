@@ -47,4 +47,57 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    /**
+     * Prepare exception for rendering.
+     *
+     * @param  \Throwable  $e
+     * @return \Throwable
+     */
+    public function render($request, Throwable $e)
+    {
+        /** @var \Illuminate\Http\Response $response */
+        $response = parent::render($request, $e);
+
+        if (! $request->wantsJson()) {
+            if (
+                in_array($response->status(), [401, 403, 404, 500, 503])
+                // && !app()->environment(['local', 'testing'])
+            ) {
+                $error_description = [
+                    401 => 'To view this page, you must first log in.',
+                    403 => 'You do not have permission to view the requested page.',
+                    404 => 'The requested page does not exist or you do not have permission to view it.',
+                    500 => 'There is a problem with the server.',
+                    503 => 'The server is currently in maintenance mode.',
+                ][$response->status()];
+
+                seo()->title('❌ '.$response->status().' - '.$response->statusText());
+                inertia()->share('title', '❌ '.$response->status().' - '.$response->statusText());
+
+                return inertia('error-page', [
+                    'status' => $response->status(),
+                    'message' => $response->statusText(),
+                    'description' => $error_description,
+                ])
+                    ->toResponse($request)
+                    ->setStatusCode($response->status());
+            }
+
+            if (in_array($response->status(), [419, 429])) {
+                $message = $response->statusText();
+
+                if ($response->status() === 419) {
+                    $message = 'Your session is expired. Please refresh the page and try again.';
+                }
+
+                return back()
+                    ->with('server_toast', [
+                        'title' => $message,
+                    ]);
+            }
+        }
+
+        return $response;
+    }
 }

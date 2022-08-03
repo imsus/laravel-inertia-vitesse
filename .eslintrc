@@ -1,5 +1,8 @@
 {
   "root": true,
+  "globals": {
+    "defineOptions": "readonly"
+  },
   "extends": "@antfu",
   "ignorePatterns": [
     "**/node_modules/**",
