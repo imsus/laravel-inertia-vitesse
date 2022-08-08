@@ -1,5 +1,6 @@
 import {
   defineConfig,
+  presetIcons,
   presetTypography,
   presetUno,
   presetWebFonts,
@@ -16,6 +17,10 @@ export default defineConfig({
   presets: [
     presetUno(),
     presetTypography(),
+    presetIcons({
+      scale: 1.2,
+      warn: true,
+    }),
     presetWebFonts({
       fonts: {
         sans: 'Inter',

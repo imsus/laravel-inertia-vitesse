@@ -6,6 +6,7 @@ specifiers:
   '@commitlint/config-conventional': ^17.0.3
   '@evilmartians/lefthook': ^1.0.5
   '@headlessui/vue': ^1.6.7
+  '@iconify-json/ph': ^1.1.2
   '@inertiajs/inertia': ^0.11.0
   '@inertiajs/inertia-vue3': ^0.6.0
   '@inertiajs/progress': ^0.2.7
@@ -60,6 +61,7 @@ devDependencies:
   '@commitlint/cli': 17.0.3
   '@commitlint/config-conventional': 17.0.3
   '@evilmartians/lefthook': 1.0.5
+  '@iconify-json/ph': 1.1.2
   '@types/node': 18.6.3
   '@vue/test-utils': 2.0.2_vue@3.2.37
   eslint: 8.21.0
@@ -1557,9 +1559,14 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
+  /@iconify-json/ph/1.1.2:
+    resolution: {integrity: sha512-NuTdtt/UmuxIHS4hfdyv3BP5JiWikNkr81hFHXDScXlH0GUMdRSY/B5T9vDvbXDY/esMLFnIAXoFVDLsGinhpw==}
+    dependencies:
+      '@iconify/types': 1.1.0
+    dev: true
+
   /@iconify/types/1.1.0:
     resolution: {integrity: sha512-Jh0llaK2LRXQoYsorIH8maClebsnzTcve+7U3rQUSnC11X4jtPnFuyatqFLvMxZ8MLG8dB4zfHsbPfuvxluONw==}
-    dev: false
 
   /@iconify/utils/1.0.33:
     resolution: {integrity: sha512-vGeAqo7aGPxOQmGdVoXFUOuyN+0V7Lcrx2EvaiRjxUD1x6Om0Tvq2bdm7E24l2Pz++4S0mWMCVFXe/17EtKImQ==}
