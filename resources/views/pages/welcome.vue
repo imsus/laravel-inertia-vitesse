@@ -37,6 +37,21 @@ const formGet = (url: string) => {
         <InertiaLink class="aspect-[32/9] md:aspect-[16/9] border inline-flex p-6 items-end hover:(bg-black text-white) dark:hover:(bg-white text-black) transition" href="/about">
           About Page
         </InertiaLink>
+        <InertiaLink class="aspect-[32/9] md:aspect-[16/9] border inline-flex p-6 items-end hover:(bg-black text-white) dark:hover:(bg-white text-black) transition" href="/about">
+          Form Page
+        </InertiaLink>
+        <InertiaLink class="aspect-[32/9] md:aspect-[16/9] border inline-flex p-6 items-end hover:(bg-black text-white) dark:hover:(bg-white text-black) transition" href="/about">
+          Search Page
+        </InertiaLink>
+        <InertiaLink class="aspect-[32/9] md:aspect-[16/9] border inline-flex p-6 items-end hover:(bg-black text-white) dark:hover:(bg-white text-black) transition" href="/about">
+          Datatables Page
+        </InertiaLink>
+        <InertiaLink class="aspect-[32/9] md:aspect-[16/9] border inline-flex p-6 items-end hover:(bg-black text-white) dark:hover:(bg-white text-black) transition" href="/about">
+          Exporting / Importing Page
+        </InertiaLink>
+        <InertiaLink class="aspect-[32/9] md:aspect-[16/9] border inline-flex p-6 items-end hover:(bg-black text-white) dark:hover:(bg-white text-black) transition" href="/about">
+          Multiple Pagination Page
+        </InertiaLink>
       </nav>
     </div>
 
