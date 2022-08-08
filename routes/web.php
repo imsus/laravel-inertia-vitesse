@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'home']);
 Route::get('/about', [PageController::class, 'about']);
+Route::get('/form', [PageController::class, 'form']);
+Route::post('/form', [PageController::class, 'submitForm']);
 
 if (app()->environment('local')) {
     Route::get('/error/{error_id}', [ErrorController::class, 'show']);
