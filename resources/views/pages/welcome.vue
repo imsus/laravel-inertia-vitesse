@@ -1,10 +1,25 @@
 <script setup lang="ts">
+import type { Ref } from 'vue'
 import BlankLayout from '~/views/layouts/blank-layout.vue'
 import DefaultLayout from '~/views/layouts/default-layout.vue'
 
 defineOptions({
   layout: [BlankLayout, DefaultLayout],
 })
+
+const serverToast: Ref<Record<string, any> | null> = ref(null)
+
+const form = useForm({})
+
+const formGet = (url: string) => {
+  form.get(url, {
+    preserveScroll: true,
+    preserveState: true,
+    onSuccess: (page): void => {
+      serverToast.value = page.props.session?.server_toast
+    },
+  })
+}
 </script>
 
 <template>
@@ -40,12 +55,12 @@ defineOptions({
         <InertiaLink class="aspect-[32/9] md:aspect-[16/9] border inline-flex p-6 items-end hover:(bg-black text-white) dark:hover:(bg-white text-black) transition" href="/error/404">
           Error 404
         </InertiaLink>
-        <InertiaLink class="aspect-[32/9] md:aspect-[16/9] border inline-flex p-6 items-end hover:(bg-black text-white) dark:hover:(bg-white text-black) transition" href="/error/419" preserve-scroll>
+        <button as="button" class="aspect-[32/9] md:aspect-[16/9] border inline-flex p-6 items-end hover:(bg-black text-white) dark:hover:(bg-white text-black) transition" @click="formGet('/error/419')">
           Error 419
-        </InertiaLink>
-        <InertiaLink class="aspect-[32/9] md:aspect-[16/9] border inline-flex p-6 items-end hover:(bg-black text-white) dark:hover:(bg-white text-black) transition" href="/error/429" preserve-scroll>
+        </button>
+        <button as="button" class="aspect-[32/9] md:aspect-[16/9] border inline-flex p-6 items-end hover:(bg-black text-white) dark:hover:(bg-white text-black) transition" @click="formGet('/error/429')">
           Error 429
-        </InertiaLink>
+        </button>
         <InertiaLink class="aspect-[32/9] md:aspect-[16/9] border inline-flex p-6 items-end hover:(bg-black text-white) dark:hover:(bg-white text-black) transition" href="/error/500">
           Error 500
         </InertiaLink>
@@ -54,5 +69,13 @@ defineOptions({
         </InertiaLink>
       </nav>
     </div>
+
+    <teleport to="#overlay-container">
+      <div v-if="form.recentlySuccessful" class="fixed bottom-6 md:top-20 md:bottom-auto left-0 right-0 flex justify-center px-4">
+        <div class="bg-black text-white dark:(bg-white text-black) px-6 py-3 inline-flex items-center rounded">
+          {{ serverToast?.title }}
+        </div>
+      </div>
+    </teleport>
   </div>
 </template>
